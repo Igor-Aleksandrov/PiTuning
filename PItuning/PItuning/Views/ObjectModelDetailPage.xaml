@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PItuning.Views.ObjectModelDetailPage"
+             Title="{Binding Title}">
+    <Grid Padding="15">
+        <Grid.RowDefinitions Spacing="20">
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions Spacing="20">
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Label Grid.Row="0" Grid.Column="0" HorizontalOptions="Center" FontSize="Small">Process gain \n gp, %</Label>
+        <Label Grid.Row="0" Grid.Column="1" HorizontalOptions="Center" FontSize="Small">Dead time&#x0a;Dt, sec</Label>
+        <Label Grid.Row="0" Grid.Column="2" HorizontalOptions="Center" FontSize="Small">Time constant&#x0d;tau1, sec</Label>
+        <Entry Text="{Binding ObjectModel.Gp}" Grid.Row="1" Grid.Column="0" Placeholder="000.1" FontSize="Small" PlaceholderColor="Olive" HorizontalOptions="Center" Keyboard="Numeric"/>
+        <Entry Text="{Binding ObjectModel.Dt}" Grid.Row="1" Grid.Column="1" Placeholder="005.0" PlaceholderColor="Olive" HorizontalOptions="Center" Keyboard="Numeric"/>
+        <Entry Text="{Binding ObjectModel.Tau1}" Grid.Row="1" Grid.Column="2" Placeholder="030.0" PlaceholderColor="Olive" HorizontalOptions="Center" Keyboard="Numeric"/>
+    </Grid>
+</ContentPage>
