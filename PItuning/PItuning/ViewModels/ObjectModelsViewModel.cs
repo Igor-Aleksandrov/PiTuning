@@ -14,12 +14,16 @@ namespace PItuning.ViewModels
     {
         public ObservableCollection<ObjectModel> ObjectModels { get; set; }
         public Command LoadObjectModelsCommand { get; set; }
+        public Command CreateObjectModelCommand { get; set; }
+
+        public INavigation Navigation { get; set; }
 
         public ObjectModelsViewModel()
         {
             Title = "Controllers";
             ObjectModels = new ObservableCollection<ObjectModel>();
             LoadObjectModelsCommand = new Command(async () => await ExecuteLoadObjectModelsCommand());
+            CreateObjectModelCommand = new Command(async () => await CreateObjectModel());
 
             MessagingCenter.Subscribe<NewObjectModelPage, ObjectModel>(this, "AddObjectModel", async (obj, objectModel) =>
             {
@@ -27,6 +31,11 @@ namespace PItuning.ViewModels
                 ObjectModels.Add(newObjectModel);
                 await DataStore.AddObjectModelAsync(newObjectModel);
             });
+        }
+
+        async Task CreateObjectModel()
+        {
+            await Navigation.PushModalAsync(new NewObjectModelPage(new NewObjectModelViewModel() { ListViewModel = this } ));
         }
 
         async Task ExecuteLoadObjectModelsCommand()

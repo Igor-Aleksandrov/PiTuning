@@ -16,13 +16,13 @@ namespace PItuning.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ObjectModelsPage : ContentPage
     {
-        ObjectModelsViewModel viewModel;
+        public ObjectModelsViewModel viewModel;
 
         public ObjectModelsPage()
         {
             InitializeComponent();
 
-            BindingContext = viewModel = new ObjectModelsViewModel();
+            BindingContext = viewModel = new ObjectModelsViewModel() { Navigation = this.Navigation};
         }
 
         async void OnObjectModelSelected(object sender, SelectedItemChangedEventArgs args)
@@ -36,12 +36,7 @@ namespace PItuning.Views
             // Manually deselect ObjectModel.
             ObjectModelsListView.SelectedItem = null;
         }
-
-        async void AddObjectModel_Clicked(object sender, EventArgs e)
-        {
-            await Navigation.PushModalAsync(new NewObjectModelPage(new NewObjectModelViewModel() { ListViewModel = viewModel } ));
-        }
-
+        
         protected override void OnAppearing()
         {
             base.OnAppearing();
