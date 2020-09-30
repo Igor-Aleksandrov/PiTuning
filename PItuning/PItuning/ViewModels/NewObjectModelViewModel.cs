@@ -5,13 +5,28 @@ using System.Text;
 
 namespace PItuning.ViewModels
 {
-    class NewObjectModelViewModel : BaseViewModel
+    public class NewObjectModelViewModel : BaseViewModel
     {
+        private ObjectModelsViewModel omvm;
         public ObjectModel ObjectModel { get; set; }
         public NewObjectModelViewModel()
         {
-            ObjectModel = new ObjectModel();
-            
+            ObjectModel = new ObjectModel
+            {
+                TagName = "Controller TagName",
+                Description = "This is a controller description.",
+                Gp = 1.1,
+                Dt = 13,
+                Tau1 = 120,
+                Tau2 = 0,
+                Beta = 0
+            };
+
+        }
+        public ObjectModelsViewModel ListViewModel
+        {
+            get { return omvm; }
+            set { SetProperty(ref omvm, value); }
         }
         string tagName = string.Empty;
         public string TagName
@@ -49,6 +64,12 @@ namespace PItuning.ViewModels
             get { return ObjectModel.Beta; }
             set { if (SetProperty(ref beta, value)) ObjectModel.Beta = beta; }
         }
-        public bool Isvalid
+        public bool IsValid
+        {
+            get
+            {
+                return true; //TODO checking
+            }
+        }
     }
 }

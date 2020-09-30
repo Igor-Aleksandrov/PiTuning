@@ -5,41 +5,33 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 using PItuning.Models;
+using PItuning.ViewModels;
+using System.Diagnostics;
 
 namespace PItuning.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class NewObjectModelPage : ContentPage
     {
-        public ObjectModel ObjectModel { get; set; }
-
-        public NewObjectModelPage()
+        public NewObjectModelViewModel NewViewModel { get; private set; }
+        public NewObjectModelPage(NewObjectModelViewModel vm)
         {
             InitializeComponent();
-
-            ObjectModel = new ObjectModel
-            {
-                TagName = "Controller name",
-                Description = "This is a controller description.",
-                Gp = 1.1,
-                Dt = 13,
-                Tau1 = 120,
-                Tau2 = 0,
-                Beta = 0
-            };
-
-            BindingContext = this;
+            NewViewModel = vm;
+            this.BindingContext = NewViewModel;
         }
 
         async void Save_Clicked(object sender, EventArgs e)
         {
-            MessagingCenter.Send(this, "AddObjectModel", ObjectModel);
-            await Navigation.PopModalAsync();
+            // MessagingCenter.Send(this, "AddObjectModel", ObjectModel);
+            // await Navigation.PopModalAsync();
+            Debug.WriteLine(e);
         }
 
         async void Cancel_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PopModalAsync();
+            //await Navigation.PopModalAsync();
+            Debug.WriteLine(e);
         }
     }
 }

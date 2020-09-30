@@ -39,7 +39,7 @@ namespace PItuning.Views
 
         async void AddObjectModel_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushModalAsync(new NavigationPage(new NewObjectModelPage()));
+            await Navigation.PushModalAsync(new NewObjectModelPage(new NewObjectModelViewModel() { ListViewModel = viewModel } ));
         }
 
         protected override void OnAppearing()
