@@ -20,18 +20,5 @@ namespace PItuning.Views
             NewViewModel = vm;
             this.BindingContext = NewViewModel;
         }
-
-        async void Save_Clicked(object sender, EventArgs e)
-        {
-            // MessagingCenter.Send(this, "AddObjectModel", ObjectModel);
-            // await Navigation.PopModalAsync();
-            Debug.WriteLine(e);
-        }
-
-        async void Cancel_Clicked(object sender, EventArgs e)
-        {
-            //await Navigation.PopModalAsync();
-            Debug.WriteLine(e);
-        }
     }
 }

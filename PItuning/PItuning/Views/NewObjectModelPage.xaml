@@ -5,14 +5,14 @@
              Title="New Controller">
     
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Cancel" Clicked="Cancel_Clicked">
+        <ToolbarItem Text="Cancel" Command="{Binding ListViewModel.CancelCommand}">
             <ToolbarItem.Icon>
                 <OnPlatform x:TypeArguments="FileImageSource">
                     <On Platform="UWP" Value="cancel.png"/>
                 </OnPlatform>
             </ToolbarItem.Icon>
         </ToolbarItem>
-        <ToolbarItem Text="Save" Clicked="Save_Clicked">
+        <ToolbarItem Text="Save" Command="{Binding ListViewModel.SaveObjectModelCommand}" CommandParameter="{Binding}" >
             <ToolbarItem.Icon>
                 <OnPlatform x:TypeArguments="FileImageSource">
                     <On Platform="UWP" Value="save.png"/>
