@@ -54,7 +54,7 @@ namespace PItuning.ViewModels
 
         async Task CreateObjectModel()
         {
-            await Navigation.PushModalAsync(new NewObjectModelPage(new NewObjectModelViewModel() { ListViewModel = this } ));
+            await Navigation.PushModalAsync(new NavigationPage(new NewObjectModelPage(new NewObjectModelViewModel() { ListViewModel = this })));
         }
 
         async Task ExecuteLoadObjectModelsCommand()

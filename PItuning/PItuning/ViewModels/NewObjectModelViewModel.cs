@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Xamarin.Forms;
 
 namespace PItuning.ViewModels
 {
@@ -9,6 +10,8 @@ namespace PItuning.ViewModels
     {
         private ObjectModelsViewModel omvm;
         public ObjectModel ObjectModel { get; set; }
+        public INavigation Navigation { get; set; }
+
         public NewObjectModelViewModel()
         {
             ObjectModel = new ObjectModel
@@ -21,6 +24,7 @@ namespace PItuning.ViewModels
                 Tau2 = 0,
                 Beta = 0
             };
+            Title = ObjectModel.TagName;
 
         }
         public ObjectModelsViewModel ListViewModel

@@ -2,8 +2,9 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="PItuning.Views.NewObjectModelPage"
-             Title="New Controller">
-    
+              Title="{Binding Title}"
+             x:Name="NewControllerPage">
+
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Cancel" Command="{Binding ListViewModel.CancelCommand}">
             <ToolbarItem.Icon>
@@ -12,7 +13,7 @@
                 </OnPlatform>
             </ToolbarItem.Icon>
         </ToolbarItem>
-        <ToolbarItem Text="Save" Command="{Binding ListViewModel.SaveObjectModelCommand}" CommandParameter="{Binding}" >
+        <ToolbarItem Text="Save" Command="{Binding ListViewModel.SaveObjectModelCommand}" CommandParameter="{Binding ObjectModel}" >
             <ToolbarItem.Icon>
                 <OnPlatform x:TypeArguments="FileImageSource">
                     <On Platform="UWP" Value="save.png"/>
@@ -20,7 +21,6 @@
             </ToolbarItem.Icon>
         </ToolbarItem>
     </ContentPage.ToolbarItems>
-    
     <ContentPage.Content>
         <StackLayout Spacing="5" Padding="15">
             <Label Text="TageName" FontSize="Small" />
@@ -45,7 +45,6 @@
                 <Entry Text="{Binding ObjectModel.Dt}" Grid.Row="1" Grid.Column="1" Placeholder="005.0" PlaceholderColor="Olive" HorizontalOptions="Center" Keyboard="Numeric"/>
                 <Entry Text="{Binding ObjectModel.Tau1}" Grid.Row="1" Grid.Column="2" Placeholder="030.0" PlaceholderColor="Olive" HorizontalOptions="Center" Keyboard="Numeric"/>
             </Grid>
-
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

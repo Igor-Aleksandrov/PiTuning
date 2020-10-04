@@ -13,11 +13,17 @@ namespace PItuning.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class NewObjectModelPage : ContentPage
     {
-        public NewObjectModelViewModel NewViewModel { get; private set; }
+        public NewObjectModelViewModel NewViewModel;
+
+        public NewObjectModelPage()
+        {
+            this.BindingContext = NewViewModel = new NewObjectModelViewModel() { Navigation = this.Navigation };
+        }
         public NewObjectModelPage(NewObjectModelViewModel vm)
         {
             InitializeComponent();
             NewViewModel = vm;
+            NewViewModel.Navigation = this.Navigation;
             this.BindingContext = NewViewModel;
         }
     }
