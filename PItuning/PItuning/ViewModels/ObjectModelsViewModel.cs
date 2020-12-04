@@ -26,8 +26,7 @@ namespace PItuning.ViewModels
             Title = "Controllers";
             ObjectModels = new ObservableCollection<ObjectModel>();
 
-            //SaveObjectModelCommand = new Command(async (ref ObjectModel om) => await SaveObjectModel(om));
-            SaveObjectModelCommand = new Command(SaveObjectModel);
+            SaveObjectModelCommand = new Command<ObjectModel> (async om => await SaveObjectModel(om));
             CancelCommand = new Command(Cancel);
             CreateObjectModelCommand = new Command(async () => await CreateObjectModel());
             LoadObjectModelsCommand = new Command(async () => await ExecuteLoadObjectModelsCommand());
@@ -45,11 +44,12 @@ namespace PItuning.ViewModels
             await Navigation.PopModalAsync();
         }
 
-        async void SaveObjectModel(object controller)
+        async Task SaveObjectModel(object controller)
         {
             var newObjectModel = controller as ObjectModel;
             ObjectModels.Add(newObjectModel);
             await DataStore.AddObjectModelAsync(newObjectModel);
+            await Navigation.PopModalAsync();
         }
 
         async Task CreateObjectModel()
